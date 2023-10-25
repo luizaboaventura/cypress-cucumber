@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-25T11:24:48.757Z",
+    "end": "2023-10-25T11:24:52.261Z",
+    "duration": 3504,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f4d906c5-c03b-498e-95b5-9abfdefb5529",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC01_basics.cy.js",
+      "file": "cypress/e2e/QAM/TC01_basics.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "46d69ddc-618c-45df-ab1e-9503edf3e8e8",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 3467,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://conduit-realworld-example-app.fly.dev/#/login');\ncy.get('input[type=email]').type('luizaboaventuram@gmail.com');\ncy.get('input[type=password]').type('123456');\ncy.get('.btn').contains('Login').should('be.visible').click();",
+              "err": {},
+              "uuid": "6d86c25d-9b56-41e1-a597-e0b1b691ec04",
+              "parentUUID": "46d69ddc-618c-45df-ab1e-9503edf3e8e8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6d86c25d-9b56-41e1-a597-e0b1b691ec04"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3467,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

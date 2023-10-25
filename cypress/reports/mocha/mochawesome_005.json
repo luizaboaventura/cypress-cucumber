@@ -1,0 +1,154 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-10-25T11:25:50.551Z",
+    "end": "2023-10-25T11:26:06.045Z",
+    "duration": 15494,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7be480a2-b15f-479a-a5a9-f319fd7b45d3",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC06_aliases.cy.js",
+      "file": "cypress/e2e/QAM/TC06_aliases.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3384,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "25c32492-bca3-4667-9bb3-6b8e3e26b22e",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6122,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('New Article').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within($form => {\n  cy.get('input').first().type('Test 2');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').first().type('Test 2');\n  cy.get('.btn').contains('Publish Article').should('be.visible').click();\n});\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC06_aliases.cy.js:22:17)",
+                "diff": null
+              },
+              "uuid": "836671ee-74db-49bd-a314-0c6a4aa6fe7c",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 5879,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then($fav => {\n  return $fav.text();\n}).as('favCount');\ncy.get('@favCount').then($cnt => {\n  expect(parseInt($cnt)).to.eq(1);\n});\ncy.get('.btn-primary').first().click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\ncy.go('forward');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC06_aliases.cy.js:32:11)",
+                "diff": null
+              },
+              "uuid": "838a7b50-7922-4072-af6f-5d77feb421ae",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25c32492-bca3-4667-9bb3-6b8e3e26b22e"
+          ],
+          "failures": [
+            "836671ee-74db-49bd-a314-0c6a4aa6fe7c",
+            "838a7b50-7922-4072-af6f-5d77feb421ae"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15385,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

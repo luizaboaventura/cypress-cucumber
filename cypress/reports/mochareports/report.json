@@ -1,0 +1,686 @@
+{
+  "stats": {
+    "suites": 7,
+    "tests": 17,
+    "passes": 8,
+    "pending": 0,
+    "failures": 9,
+    "testsRegistered": 17,
+    "passPercent": 47.05882352941177,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2023-10-25T11:24:48.757Z",
+    "end": "2023-10-25T11:27:10.182Z",
+    "duration": 141425
+  },
+  "results": [
+    {
+      "uuid": "f4d906c5-c03b-498e-95b5-9abfdefb5529",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC01_basics.cy.js",
+      "file": "cypress/e2e/QAM/TC01_basics.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "46d69ddc-618c-45df-ab1e-9503edf3e8e8",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 3467,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://conduit-realworld-example-app.fly.dev/#/login');\ncy.get('input[type=email]').type('luizaboaventuram@gmail.com');\ncy.get('input[type=password]').type('123456');\ncy.get('.btn').contains('Login').should('be.visible').click();",
+              "err": {},
+              "uuid": "6d86c25d-9b56-41e1-a597-e0b1b691ec04",
+              "parentUUID": "46d69ddc-618c-45df-ab1e-9503edf3e8e8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6d86c25d-9b56-41e1-a597-e0b1b691ec04"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3467,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "c8261634-247e-4fd9-834a-277104d539c3",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC02_url.cy.js",
+      "file": "cypress/e2e/QAM/TC02_url.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3250,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "49fa6195-31d9-419f-b03d-602a88830c17",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6480,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('New Article').click();\n// esses dois são a mesma coisa\ncy.hash().should('include', '#/editor');\n//cy.location('hash').should('include', '#/editor')\ncy.get('input[placeholder=\"Article Title\"]').type('Test 12');\ncy.get('input[placeholder=\"What\\'s this article about?\"]').type('Test 1');\ncy.get('textarea[placeholder=\"Write your article (in markdown)\"]').type('Test 2');\ncy.get('.btn').contains('Publish Article').should('be.visible').click();\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC02_url.cy.js:27:17)",
+                "diff": null
+              },
+              "uuid": "4c009f29-ff66-4330-ad4f-521152c957e3",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 1878,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.nav-link').contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\n//cy.go(-1)\ncy.go('forward');\n//cy.go(1)",
+              "err": {
+                "message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click",
+                "estack": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n    at mouseAction (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:111493:68)\n    at Context.click (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:111657:14)\n    at wrapped (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:138518:19)\nFrom Your Spec Code:\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC02_url.cy.js:33:29)",
+                "diff": null
+              },
+              "uuid": "213fa3d0-5e98-4e8f-8cf9-13778a80341f",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "49fa6195-31d9-419f-b03d-602a88830c17"
+          ],
+          "failures": [
+            "4c009f29-ff66-4330-ad4f-521152c957e3",
+            "213fa3d0-5e98-4e8f-8cf9-13778a80341f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11608,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3cd6cd73-2df9-4525-8dff-417c275b0a87",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC03_identifyElements.cy.js",
+      "file": "cypress/e2e/QAM/TC03_identifyElements.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5c407181-7e11-4e6d-98a8-4ee5b622f813",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3306,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "990a1ce1-a40e-4c4e-9c39-e8f0bd9e0c53",
+              "parentUUID": "5c407181-7e11-4e6d-98a8-4ee5b622f813",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6248,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Article').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within($form => {\n  cy.get('input').first().type('Test 2');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').first().type('Test 2');\n  cy.get('.btn').contains('Publish Article').should('be.visible').click();\n});\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC03_identifyElements.cy.js:29:17)",
+                "diff": null
+              },
+              "uuid": "8f1c8b97-4400-4348-95fd-ebae45ee748d",
+              "parentUUID": "5c407181-7e11-4e6d-98a8-4ee5b622f813",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 2999,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').first().click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\ncy.go('forward');",
+              "err": {},
+              "uuid": "f9010ef8-2da4-493d-bfd8-427079eaa7f6",
+              "parentUUID": "5c407181-7e11-4e6d-98a8-4ee5b622f813",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "990a1ce1-a40e-4c4e-9c39-e8f0bd9e0c53",
+            "f9010ef8-2da4-493d-bfd8-427079eaa7f6"
+          ],
+          "failures": [
+            "8f1c8b97-4400-4348-95fd-ebae45ee748d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12553,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "fe41d031-8de6-4852-8eb2-ab0f53dc791f",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC04_customCommand.cy.js",
+      "file": "cypress/e2e/QAM/TC04_customCommand.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e10129a-b760-499c-b6a7-0a598483c3a3",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3328,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "79aa5bf4-6ddb-4874-94bc-c55f659b487a",
+              "parentUUID": "4e10129a-b760-499c-b6a7-0a598483c3a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6244,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Article').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within($form => {\n  cy.get('input').first().type('Test 2');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').first().type('Test 2');\n  cy.get('.btn').contains('Publish Article').should('be.visible').click();\n});\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC04_customCommand.cy.js:21:17)",
+                "diff": null
+              },
+              "uuid": "738f2b99-dfbf-44de-8ed9-08ee14a6055c",
+              "parentUUID": "4e10129a-b760-499c-b6a7-0a598483c3a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 2585,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').first().click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\ncy.go('forward');",
+              "err": {},
+              "uuid": "d14efb38-b843-424b-ae6a-35fb6bdf5600",
+              "parentUUID": "4e10129a-b760-499c-b6a7-0a598483c3a3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "79aa5bf4-6ddb-4874-94bc-c55f659b487a",
+            "d14efb38-b843-424b-ae6a-35fb6bdf5600"
+          ],
+          "failures": [
+            "738f2b99-dfbf-44de-8ed9-08ee14a6055c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12157,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "d135a345-9a29-49dc-8f73-93dcc5ccc7aa",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC05_thenCommand.cy.js",
+      "file": "cypress/e2e/QAM/TC05_thenCommand.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9a5409af-49bb-4be9-9985-37a539dd3b78",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3279,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "7b4d5970-0f6f-45f1-918d-058fac1d35e9",
+              "parentUUID": "9a5409af-49bb-4be9-9985-37a539dd3b78",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6305,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Article').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within($form => {\n  cy.get('input').first().type('Test 2');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').first().type('Test 2');\n  cy.get('.btn').contains('Publish Article').should('be.visible').click();\n});\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC05_thenCommand.cy.js:21:17)",
+                "diff": null
+              },
+              "uuid": "93cae4fe-a848-44a6-bb56-465580d43605",
+              "parentUUID": "9a5409af-49bb-4be9-9985-37a539dd3b78",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 5904,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then($fav => {\n  const favCount = $fav.text();\n  expect(parseInt(favCount)).to.eq(1);\n}).click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\ncy.go('forward');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC05_thenCommand.cy.js:31:11)",
+                "diff": null
+              },
+              "uuid": "ebab304f-a1a7-4009-9e02-8390029a1c6b",
+              "parentUUID": "9a5409af-49bb-4be9-9985-37a539dd3b78",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7b4d5970-0f6f-45f1-918d-058fac1d35e9"
+          ],
+          "failures": [
+            "93cae4fe-a848-44a6-bb56-465580d43605",
+            "ebab304f-a1a7-4009-9e02-8390029a1c6b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15488,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "7be480a2-b15f-479a-a5a9-f319fd7b45d3",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC06_aliases.cy.js",
+      "file": "cypress/e2e/QAM/TC06_aliases.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3384,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "25c32492-bca3-4667-9bb3-6b8e3e26b22e",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6122,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('New Article').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within($form => {\n  cy.get('input').first().type('Test 2');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').first().type('Test 2');\n  cy.get('.btn').contains('Publish Article').should('be.visible').click();\n});\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC06_aliases.cy.js:22:17)",
+                "diff": null
+              },
+              "uuid": "836671ee-74db-49bd-a314-0c6a4aa6fe7c",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 5879,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then($fav => {\n  return $fav.text();\n}).as('favCount');\ncy.get('@favCount').then($cnt => {\n  expect(parseInt($cnt)).to.eq(1);\n});\ncy.get('.btn-primary').first().click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\ncy.go('forward');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-primary`, but never found it.\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC06_aliases.cy.js:32:11)",
+                "diff": null
+              },
+              "uuid": "838a7b50-7922-4072-af6f-5d77feb421ae",
+              "parentUUID": "4ad583af-12c6-4602-ab24-abf4fca448b4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25c32492-bca3-4667-9bb3-6b8e3e26b22e"
+          ],
+          "failures": [
+            "836671ee-74db-49bd-a314-0c6a4aa6fe7c",
+            "838a7b50-7922-4072-af6f-5d77feb421ae"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15385,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "43da9bb8-d319-46f8-b36c-d3d0aa91b903",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js",
+      "file": "cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "68908d75-7366-4ee9-a89c-04529cac5e86",
+          "title": "Working with plugins",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "File upload",
+              "fullTitle": "Working with plugins File upload",
+              "timedOut": null,
+              "duration": 60470,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html');\n// Upload file\nconst fileName = 'cypress.pdf';\ncy.get('[type=\"file\"]').attachFile(fileName);\ncy.get('[type=\"submit\"]').should('be.visible').click();\n// Verificar a mensagem\ncy.contains(\"You've uploaded a file. Your notes on the file were:\").should('be.visible');",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n    at timedOutWaitingForPageLoad (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:130256:64)\n    at <unknown> (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:130554:16)\n    at tryCatcher (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1807:23)\n    at <unknown> (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:4186:41)\n    at tryCatcher (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1697:18)\n    at _drainQueueStep (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2407:12)\n    at _drainQueue (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2400:9)\n    at Async._drainQueues (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2416:5)\n    at Async.drainQueues (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2286:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js:12:11)",
+                "diff": null
+              },
+              "uuid": "b85a9e36-2780-4c02-908e-074839384d73",
+              "parentUUID": "68908d75-7366-4ee9-a89c-04529cac5e86",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b85a9e36-2780-4c02-908e-074839384d73"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60470,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

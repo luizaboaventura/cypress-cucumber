@@ -1,0 +1,154 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-10-25T11:24:53.425Z",
+    "end": "2023-10-25T11:25:05.153Z",
+    "duration": 11728,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c8261634-247e-4fd9-834a-277104d539c3",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC02_url.cy.js",
+      "file": "cypress/e2e/QAM/TC02_url.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3250,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains(\"Your Feed\", {\n  timeout: 10000\n}).should(\"be.visible\");",
+              "err": {},
+              "uuid": "49fa6195-31d9-419f-b03d-602a88830c17",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 6480,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('New Article').click();\n// esses dois são a mesma coisa\ncy.hash().should('include', '#/editor');\n//cy.location('hash').should('include', '#/editor')\ncy.get('input[placeholder=\"Article Title\"]').type('Test 12');\ncy.get('input[placeholder=\"What\\'s this article about?\"]').type('Test 1');\ncy.get('textarea[placeholder=\"Write your article (in markdown)\"]').type('Test 2');\ncy.get('.btn').contains('Publish Article').should('be.visible').click();\ncy.url().should('include', 'article');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://conduit-realworld-example-app.fly.dev/#/editor' to include 'article'\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC02_url.cy.js:27:17)",
+                "diff": null
+              },
+              "uuid": "4c009f29-ff66-4330-ad4f-521152c957e3",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 1878,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.nav-link').contains('Luiza').click();\ncy.contains('Profile').should('be.visible').click();\ncy.get('.ion-heart').click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').click();\ncy.reload();\ncy.contains('Luiza doesn\\'t have favorites.').should('be.visible');\ncy.go('back');\n//cy.go(-1)\ncy.go('forward');\n//cy.go(1)",
+              "err": {
+                "message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click",
+                "estack": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n    at mouseAction (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:111493:68)\n    at Context.click (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:111657:14)\n    at wrapped (https://conduit-realworld-example-app.fly.dev/__cypress/runner/cypress_runner.js:138518:19)\nFrom Your Spec Code:\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC02_url.cy.js:33:29)",
+                "diff": null
+              },
+              "uuid": "213fa3d0-5e98-4e8f-8cf9-13778a80341f",
+              "parentUUID": "b1cb4592-1ed2-4f4d-b7da-d574eeb195b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "49fa6195-31d9-419f-b03d-602a88830c17"
+          ],
+          "failures": [
+            "4c009f29-ff66-4330-ad4f-521152c957e3",
+            "213fa3d0-5e98-4e8f-8cf9-13778a80341f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11608,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

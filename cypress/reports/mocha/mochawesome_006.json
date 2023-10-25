@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-10-25T11:26:07.233Z",
+    "end": "2023-10-25T11:27:10.182Z",
+    "duration": 62949,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "43da9bb8-d319-46f8-b36c-d3d0aa91b903",
+      "title": "",
+      "fullFile": "cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js",
+      "file": "cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "68908d75-7366-4ee9-a89c-04529cac5e86",
+          "title": "Working with plugins",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "File upload",
+              "fullTitle": "Working with plugins File upload",
+              "timedOut": null,
+              "duration": 60470,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html');\n// Upload file\nconst fileName = 'cypress.pdf';\ncy.get('[type=\"file\"]').attachFile(fileName);\ncy.get('[type=\"submit\"]').should('be.visible').click();\n// Verificar a mensagem\ncy.contains(\"You've uploaded a file. Your notes on the file were:\").should('be.visible');",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n    at timedOutWaitingForPageLoad (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:130256:64)\n    at <unknown> (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:130554:16)\n    at tryCatcher (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1807:23)\n    at <unknown> (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:4186:41)\n    at tryCatcher (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:1697:18)\n    at _drainQueueStep (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2407:12)\n    at _drainQueue (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2400:9)\n    at Async._drainQueues (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2416:5)\n    at Async.drainQueues (https://cgi-lib.berkeley.edu/__cypress/runner/cypress_runner.js:2286:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://qamdemo/./cypress/e2e/QAM/TC07_plugin_uploadFiles.cy.js:12:11)",
+                "diff": null
+              },
+              "uuid": "b85a9e36-2780-4c02-908e-074839384d73",
+              "parentUUID": "68908d75-7366-4ee9-a89c-04529cac5e86",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b85a9e36-2780-4c02-908e-074839384d73"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60470,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
